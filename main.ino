@@ -110,7 +110,7 @@ void loop() {
  Serial.print(hospital); Serial.print("|");
  Serial.print(tratamiento); Serial.print("|");
  Serial.print(prueba); Serial.print("|");
- Serial.print(cuidarse); Serial.print("|");
+ Serial.print(cuidarse); 
  delay(3000);
  Serial.flush();
 
