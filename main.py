@@ -1,4 +1,5 @@
 import serial
+import graph
 
 # bloque ARDUINO para tomar los valores directamente de arduino
 try:
@@ -16,19 +17,21 @@ while count < 3:
 print(rawData)
 arduino.close()
 
-# bloque PYTHON para tomar los valores y crear arreglos
+# bloque PYTHON para graficar
 delimiter = "|"
-count = 0
-oxig = [0.00, 0.00, 0.00, 0.00, 0.00] 
-oxig2 = [0.00, 0.00, 0.00, 0.00, 0.00]
-o = []
+oxig = []
+temp = []
 
+# itera en los datos, extrae los valores y los pasa a sus arreglos correspondientes
 for read in rawData:
     read = read.split(delimiter)
-    print(read[12])
-    if count > 5 : continue
-    oxig[count] = read[12]
-    print(oxig[count])
-    o = float(oxig[count])
-    oxig2[count] = o
-    count += 1
+    oxig.append(read[9])
+    temp.append(read[8])
+
+# convierte los valores de los arreglos a float porque vienen como strings
+oxig = [float(x) for x in oxig]
+temp = [float(x) for x in temp]
+
+# se crean las graficas
+graph.create(oxig, "Oxigenacion")
+graph.create(temp, "Temperatura")
