@@ -1,6 +1,6 @@
 import serial
 
-# bloque para tomar los valores directamente de arduino
+# bloque ARDUINO para tomar los valores directamente de arduino
 try:
     arduino = serial.Serial("COM4", 9600) # ponemos primero el número del puerto, dependiendo de la compu
 except:
@@ -16,7 +16,7 @@ while count < 3:
 print(rawData)
 arduino.close()
 
-# bloque para tomar los valores y crear arreglos
+# bloque PYTHON para tomar los valores y crear arreglos
 delimiter = "|"
 count = 0
 oxig = [0.00, 0.00, 0.00, 0.00, 0.00] 
