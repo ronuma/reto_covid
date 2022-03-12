@@ -3,7 +3,12 @@ import graph
 
 # bloque ARDUINO para tomar los valores directamente de arduino
 try:
-    arduino = serial.Serial("COM4", 9600) # ponemos primero el número del puerto, dependiendo de la compu
+    # ponemos primero el número del puerto, dependiendo de la compu
+    arduino = serial.Serial()
+    arduino.port = 'COM7'
+    arduino.open()
+    arduino.baudrate = 9600
+    arduino.timeout = 0
 except:
     print("Check the port")
 

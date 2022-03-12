@@ -28,6 +28,7 @@ float oxygen;
 
 void setup() {
   Serial.begin(9600);
+  Serial.setTimeout(0);
   lcd.begin(16, 2);
   lcd.print("COVID TEST");
   lcd.setCursor(0,1);
@@ -111,6 +112,7 @@ void loop() {
  Serial.print(tratamiento); Serial.print("|");
  Serial.print(prueba); Serial.print("|");
  Serial.print(cuidarse); 
+ Serial.print("\n"); 
  delay(3000);
  Serial.flush();
 
