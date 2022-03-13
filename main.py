@@ -3,23 +3,20 @@ import graph
 
 # bloque ARDUINO para tomar los valores directamente de arduino
 try:
-    # ponemos primero el número del puerto, dependiendo de la compu
     arduino = serial.Serial()
-    arduino.port = 'COM7'
-    arduino.open()
+    arduino.port = 'COM5'
     arduino.baudrate = 9600
-    arduino.timeout = 0
+    arduino.open()
 except:
     print("Check the port")
 
 rawData = []
 count = 0
 
-while count < 3:
+while count < 3: # especificar la condicion a partir del número de datos a evaluar
     rawData.append(str(arduino.readline()))
     count += 1
 
-print(rawData)
 arduino.close()
 
 # bloque PYTHON para graficar
@@ -27,7 +24,7 @@ delimiter = "|"
 oxig = []
 temp = []
 
-# itera en los datos, extrae los valores y los pasa a sus arreglos correspondientes
+# itera en los datos, sextrae los valores y los pasa a sus arreglos correspondientes
 for read in rawData:
     read = read.split(delimiter)
     oxig.append(read[9])
