@@ -50,8 +50,7 @@ void loop() {
 
 /* MEDICIONES */
     // Temperatura (sensor -40°C a 125°C) 
-    float volts = (analogRead(A0)/1024.0)*5.0;
-    float temperature = (volts-0.5)*100;
+    float temperature = (((analogRead(A0)-0.5)/(1024.0))*5.0)*100.0;
     byte FlagTemp;
     if (temperature >= 38){
       FlagTemp = 1;
@@ -110,7 +109,7 @@ void loop() {
  Serial.print(hospital); Serial.print("|");
  Serial.print(tratamiento); Serial.print("|");
  Serial.print(prueba); Serial.print("|");
- Serial.print(cuidarse); Serial.print("\n");
+ Serial.print(cuidarse); Serial.println("|");
  delay(3000);
  Serial.flush();
 
